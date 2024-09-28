@@ -1,4 +1,4 @@
-%!TEX root = ../principal.tex
+%!TEX root = ../main.tex
 
 \setchapterimage[7.5cm]{figs/intro/highway}
 \setchapterpreamble[u]{\margintoc}
@@ -43,3 +43,29 @@
 	\item Álgebra lineal
 	\item Cálculo variacional
 \end{itemize}
+
+El análisis estructural es una disciplina fundamental en la ingeniería civil, mecánica y aeroespacial, entre otras.  Su objetivo principal es determinar el comportamiento de estructuras bajo diversas condiciones de carga, lo que permite predecir su resistencia, rigidez y estabilidad.  Tradicionalmente, el análisis estructural se ha basado en métodos analíticos para resolver las ecuaciones que gobiernan el comportamiento de las estructuras. Sin embargo, estos métodos tienen limitaciones cuando se trata de analizar estructuras complejas con geometrías irregulares, materiales no lineales o condiciones de carga complejas.
+
+Es aquí donde el Método de los Elementos Finitos (MEF) emerge como una herramienta poderosa y versátil. El MEF es una técnica numérica que permite aproximar la solución de ecuaciones diferenciales que describen fenómenos físicos, como el comportamiento de estructuras bajo cargas.  A diferencia de los métodos analíticos, el MEF puede manejar geometrías complejas, materiales no lineales y condiciones de carga arbitrarias, lo que lo convierte en una herramienta indispensable para el análisis de estructuras modernas.
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.8\textwidth]{ejemplo_mef_puente.jpg} % Reemplaza con una imagen de un puente analizado con MEF
+%	\caption{Ejemplo de análisis de un puente mediante el Método de los Elementos Finitos.  (Imagen de referencia, reemplazar por una imagen real)}
+%\end{figure}
+
+El MEF se basa en la discretización del dominio de la estructura en un conjunto de elementos finitos interconectados.  Cada elemento se representa mediante un conjunto de ecuaciones algebraicas que aproximan el comportamiento del elemento. Al ensamblar las ecuaciones de todos los elementos, se obtiene un sistema global de ecuaciones que describe el comportamiento de la estructura completa.  La solución de este sistema de ecuaciones proporciona información sobre los desplazamientos, deformaciones y esfuerzos en la estructura.
+
+En este libro, exploraremos los fundamentos del MEF y su aplicación al análisis estructural.  Abordaremos los siguientes temas:
+
+\textbf{Bases matemáticas:} Repasaremos los conceptos matemáticos necesarios para comprender el MEF, incluyendo álgebra lineal, cálculo diferencial e integral, y ecuaciones diferenciales.
+
+\textbf{Conceptos fundamentales del MEF:}  Estudiaremos los principios básicos del MEF, como la discretización del dominio, las funciones de forma, el ensamblaje de matrices y la aplicación de condiciones de contorno.
+
+\textbf{Métodos aproximados:}  Analizaremos métodos aproximados como el método de Rayleigh-Ritz y el método de Galerkin, que son la base del MEF.
+
+\textbf{Elementos finitos de 1, 2 y 3 dimensiones:}  Derivamos las ecuaciones de elementos finitos para diferentes tipos de elementos, incluyendo barras, vigas, placas y sólidos.
+
+\textbf{Aplicaciones:} Resolveremos problemas de análisis estructural utilizando el MEF, incluyendo ejemplos de estructuras de barras, vigas y marcos, placas y láminas, y sólidos tridimensionales.
+	
+Además, a lo largo del libro utilizaremos el lenguaje de programación Python para implementar los conceptos del MEF y resolver problemas de análisis estructural.  Python es un lenguaje versátil y popular en la comunidad científica e ingenieril, con una amplia gama de bibliotecas para el cálculo numérico, la visualización y el análisis de datos.  Al combinar la teoría del MEF con la práctica en Python, este libro te proporcionará las herramientas necesarias para comprender y aplicar el MEF en problemas reales de ingeniería.

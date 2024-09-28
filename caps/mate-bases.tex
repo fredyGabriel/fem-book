@@ -1,4 +1,4 @@
-%!TEX root = ../principal.tex
+%!TEX root = ../main.tex
 \setchapterimage[7.5cm]{figs/mate-bases/rotonda_czu1}
 \setchapterpreamble[u]{\margintoc}
 
@@ -40,11 +40,163 @@ En 1687 fue publicado Philosophiæ naturalis principia mathematica (en latín) d
 Es oportuno repasar algunos conceptos del cálculo diferencial. Las nociones de máximos,
 mínimos y puntos silla son fundamentales en ingeniería.
 
-$f(c)$ es un \textit{máximo relativo} de una función $f(x)$ si $f(c) \ge f(x)$ para 
-todos los valores $x$ en la \textit{vecindad} de $c$.
+En el análisis matemático, la identificación de máximos, mínimos y puntos silla de una función es crucial para comprender su comportamiento y sus características importantes. Estos puntos, conocidos colectivamente como puntos críticos, nos proporcionan información valiosa sobre dónde la función alcanza sus valores más altos y más bajos, o dónde exhibe un comportamiento de "silla de montar".
+
+\subsubsection{Conceptos}
+
+Consideremos una función $f(x,y)$ de dos variables.
+
+\begin{itemize}
+	\item \textbf{Máximo local}: Un punto $(x_0, y_0)$ es un máximo local de $f$ si $f(x_0, y_0) \ge f(x, y)$ para todos los puntos $(x, y)$ en una pequeña vecindad alrededor de  $(x_0, y_0)$.  En otras palabras, la función alcanza un valor máximo en $(x_0, y_0)$ dentro de esa vecindad.
+	
+	\item \textbf{Mínimo local}: Un punto $(x_0, y_0)$ es un mínimo local de $f$ si $f(x_0, y_0) \le f(x, y)$ para todos los puntos $(x, y)$ en una pequeña vecindad alrededor de  $(x_0, y_0)$. Es decir, la función alcanza un valor mínimo en $(x_0, y_0)$ dentro de esa vecindad.
+	
+	\item \textbf{Punto silla}: Un punto $(x_0, y_0)$ es un punto silla de $f$ si no es ni un máximo local ni un mínimo local. En un punto silla, la función tiene un comportamiento similar al de una silla de montar, donde aumenta en algunas direcciones y disminuye en otras.
+\end{itemize}
+
+\subsubsection{Expresiones Matemáticas}
+
+Para encontrar los puntos críticos de una función $f(x,y)$, se deben seguir los siguientes pasos:
+
+\begin{enumerate}
+	\item \textbf{Calcular las derivadas parciales}:  Calcula las derivadas parciales de primer orden de $f$ con respecto a $x$ e $y$:
+	
+	$$\frac{\partial f}{\partial x} \quad \text{y} \quad \frac{\partial f}{\partial y}$$
+	
+	\item \textbf{Encontrar los puntos críticos}:  Encuentra los puntos $(x_0, y_0)$ donde ambas derivadas parciales son cero:
+	
+	$$\frac{\partial f}{\partial x}(x_0, y_0) = 0 \quad \text{y} \quad \frac{\partial f}{\partial y}(x_0, y_0) = 0$$
+	
+	\item \textbf{Calcular la matriz Hessiana}: Calcula la matriz Hessiana de $f$ en cada punto crítico $(x_0, y_0)$:
+	
+	$$H(x_0, y_0) = \begin{bmatrix} 
+		\dfrac{\partial^2 f}{\partial x^2}(x_0, y_0) & \dfrac{\partial^2 f}{\partial x \partial y}(x_0, y_0) \\[3mm]
+		\dfrac{\partial^2 f}{\partial y \partial x}(x_0, y_0) & \dfrac{\partial^2 f}{\partial y^2}(x_0, y_0) 
+	\end{bmatrix}$$
+	
+	\item \textbf{Determinar la naturaleza de los puntos críticos}:
+	\begin{itemize}
+		\item Si el determinante de la matriz Hessiana es positivo ($|H| > 0$) y la segunda derivada parcial con respecto a $x$ es positiva ($\dfrac{\partial^2 f}{\partial x^2} > 0$), entonces $(x_0, y_0)$ es un \textit{mínimo local}.
+		
+		\item Si el determinante de la matriz Hessiana es positivo ($|H| > 0$) y la segunda derivada parcial con respecto a $x$ es negativa ($\dfrac{\partial^2 f}{\partial x^2} < 0$), entonces $(x_0, y_0)$ es un \textit{máximo local}.
+		
+		\item Si el determinante de la matriz Hessiana es negativo ($|H| < 0$), entonces $(x_0, y_0)$ es un \textit{punto silla}.
+		
+		\item Si el determinante de la matriz Hessiana es cero ($|H| = 0$), la prueba es inconclusa y se necesitan métodos adicionales para determinar la naturaleza del punto crítico.
+	\end{itemize}
+\end{enumerate}
+
+\subsubsection{Ejemplos de Aplicación}
+
+\begin{example}
+	
+	Encontrar los puntos críticos de la función $f(x,y) = x^2 + y^2 - 2x - 4y + 5$.
+	
+	\textbf{Solución}:
+	
+	\begin{enumerate}
+		\item Derivadas parciales:
+		
+		$$\dfrac{\partial f}{\partial x} = 2x - 2, \quad \dfrac{\partial f}{\partial y} = 2y - 4$$
+		
+		\item Puntos críticos:
+		
+		Resolviendo el sistema de ecuaciones $\frac{\partial f}{\partial x} = 0$ y $\frac{\partial f}{\partial y} = 0$, obtenemos el punto crítico $(1, 2)$.
+		
+		\item Matriz Hessiana:
+		
+		$$H(1, 2) = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$$
+		
+		\item Naturaleza del punto crítico:
+		
+		El determinante de la matriz Hessiana es $|H| = 4 > 0$ y $\dfrac{\partial^2 f}{\partial x^2} = 2 > 0$. Por lo tanto, el punto $(1, 2)$ es un \textit{mínimo local}.
+	\end{enumerate}
+\end{example}
+
+
+\begin{example}
+	
+	Encontrar los puntos críticos de la función $f(x,y) = x^3 - 3xy^2$.
+	
+	\textbf{Solución}:
+	
+	\begin{enumerate}
+		\item Derivadas parciales:
+		$$\frac{\partial f}{\partial x} = 3x^2 - 3y^2, \quad \frac{\partial f}{\partial y} = -6xy$$
+		
+		\item Puntos críticos:
+		
+		Resolviendo el sistema de ecuaciones $\frac{\partial f}{\partial x} = 0$ y $\frac{\partial f}{\partial y} = 0$, obtenemos el punto crítico $(0, 0)$.
+		
+		\item Matriz Hessiana:
+		$$H(0, 0) = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$$
+		
+		\item Naturaleza del punto crítico:
+		
+		El determinante de la matriz Hessiana es $|H| = 0$. La prueba es inconclusa. En este caso, se puede observar que la función tiene un comportamiento de silla de montar en $(0,0)$.
+	\end{enumerate}
+\end{example}
+
+Estos ejemplos ilustran cómo identificar y clasificar los puntos críticos de una función de dos variables.  Los máximos, mínimos y puntos silla son conceptos fundamentales en el análisis matemático y tienen aplicaciones en diversas áreas de la ciencia y la ingeniería.
 
 
 \subsection{Ecuación de Euler-Lagrange}
+
+El cálculo variacional es una rama del análisis matemático que se ocupa de encontrar funciones que maximizan o minimizan ciertas cantidades, llamadas funcionales. Un funcional es una función que toma como argumento, también, una función y devuelve un número real. Un ejemplo clásico de un funcional es la longitud de una curva entre dos puntos.
+
+La ecuación de Euler-Lagrange es una herramienta fundamental en el cálculo variacional.  Proporciona una condición necesaria que debe cumplir una función para ser un extremo (máximo o mínimo) de un funcional.
+
+\subsubsection{La Ecuación de Euler-Lagrange}
+
+Consideremos un funcional de la forma:
+
+\begin{equation}
+	J[y] = \int_a^b L(x, y(x), y'(x)) \, dx
+\end{equation}
+
+donde:
+
+\begin{itemize}
+	\item $y(x)$ es la función que queremos encontrar.
+	\item $y'(x)$ es la derivada de $y(x)$.
+	\item $L(x, y, y')$ es una función dada, llamada Lagrangiana.
+\end{itemize}
+
+La ecuación de Euler-Lagrange establece que si $y(x)$ es un extremo del funcional $J[y]$, entonces satisface la siguiente ecuación diferencial:
+
+\begin{equation}
+	\frac{\partial L}{\partial y} - \frac{d}{dx} \left( \frac{\partial L}{\partial y'} \right) = 0
+\end{equation}
+
+\subsubsection{Ejemplo de Aplicación: La Braquistócrona}
+
+Un ejemplo clásico de la aplicación de la ecuación de Euler-Lagrange es el problema de la braquistócrona.  Este problema consiste en encontrar la curva que une dos puntos A y B en un plano vertical, de tal manera que una partícula que se desliza sin fricción bajo la influencia de la gravedad recorra la curva en el menor tiempo posible.
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.6\textwidth]{braquistocrona.png} % Reemplaza con una imagen de la braquistócrona
+%	\caption{Curva braquistócrona entre dos puntos A y B.}
+%\end{figure}
+
+En este caso, el funcional que queremos minimizar es el tiempo de recorrido, que se puede expresar como:
+
+\begin{equation}
+	T[y] = \int_a^b \frac{\sqrt{1 + (y'(x))^2}}{\sqrt{2gy(x)}} \, dx
+\end{equation}
+
+donde $g$ es la aceleración debida a la gravedad.
+
+La Lagrangiana correspondiente es:
+
+\begin{equation}
+	L(x, y, y') = \frac{\sqrt{1 + (y'(x))^2}}{\sqrt{2gy(x)}}
+\end{equation}
+
+Aplicando la ecuación de Euler-Lagrange, se puede demostrar que la curva que minimiza el tiempo de recorrido es una cicloide.
+
+\section{Conclusión}
+
+La ecuación de Euler-Lagrange es una herramienta fundamental en el cálculo variacional y tiene aplicaciones en diversas áreas de la física, la ingeniería y la economía.  Permite encontrar funciones que optimizan funcionales, lo que tiene implicaciones en la resolución de problemas de optimización y en la modelización de fenómenos físicos.
 
 \section{Álgebra lineal}
 \subsection{Operaciones con matrices}

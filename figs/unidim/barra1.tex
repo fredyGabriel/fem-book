@@ -1,0 +1,21 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{siunitx}
+\begin{document}
+\begin{tikzpicture}[scale=1]
+	\shadedraw[color=tt4, opacity=.9] (0,-.25) rectangle (4, .25);
+	\draw[->, thin] (0, 0) -- (5, 0) node[below]{$x$};
+	\draw[fill=black] (0,0) circle (2pt) node[left]{$1$};
+	\draw[fill=black] (4,0) circle (2pt) node[below right]{$2$};
+	
+	\draw[fill=black] (2.73,0) circle (2pt);
+	\node at (2.73, .5) {$P$};
+	
+	\draw[thin] (0,0) -- (0,-1) node[below]{$x_1=38\unit{cm}$};
+	\draw[thin] (2.73,0) -- (2.73,-.6) node[below]{$x_P=53\unit{cm}$};
+	\draw[thin] (4,0) -- (4,-1) node[below]{$x_2=60\unit{cm}$};
+	
+	\draw[->, very thick, tt5] (0, .5) -- (1, .5) node[pos=.5, above]{$q_1$};
+	\draw[->, very thick, tt5] (4, .5) -- (5, .5) node[pos=.5, above]{$q_2$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,40 @@
+aux-files/
+out/
+kao.sty
+kaobiblio.sty
+kaorefs.sty
+kaobook.cls
+compileall.sh
+MANIFEST.md
+**/desktop.ini
+**/*.aux
+**/*.log
+
+# Archivos auxiliares generados por LaTeX
+**/*.log
+**/*.aux
+**/*.toc
+**/*.lof
+**/*.lot
+**/*.bbl
+**/*.blg
+**/*.out
+**/*.synctex.gz
+**/*.fdb_latexmk
+
+# Archivos temporales de editores
+*.bak
+*~
+
+# Carpetas específicas de tu proyecto
+aux-files/
+out/
+
+# Archivos de configuración del sistema
+desktop.ini
+
+# Archivos de clase y paquetes de kaobook
+kao.sty
+kaobiblio.sty
+kaorefs.sty
+kaobook.cls

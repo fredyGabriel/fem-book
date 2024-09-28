@@ -1,0 +1,154 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% kaobook
+% LaTeX Template
+% Version 1.3 (December 9, 2021)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% For the latest template development version and to make contributions:
+% https://github.com/fmarotta/kaobook
+%
+% Authors:
+% Federico Marotta (federicomarotta@mail.com)
+% Based on the doctoral thesis of Ken Arroyo Ohori (https://3d.bk.tudelft.nl/ken/en)
+% and on the Tufte-LaTeX class.
+% Modified for LaTeX Templates by Vel (vel@latextemplates.com)
+%
+% License:
+% CC0 1.0 Universal (see included MANIFEST.md file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+a4paper, % Page size
+fontsize=10pt, % Base font size
+twoside=true, % Use different layouts for even and odd pages (in particular, if twoside=true, the margin column will be always on the outside)
+%open=any, % If twoside=true, uncomment this to force new chapters to start on any page, not only on right (odd) pages
+%chapterentrydots=true, % Uncomment to output dots from the chapter name to the page number in the table of contents
+numbers=noenddot, % Comment to output dots after chapter numbers; the most common values for this option are: enddot, noenddot and auto (see the KOMAScript documentation for an in-depth explanation)
+]{kaobook}
+
+% Choose the language
+\ifxetexorluatex
+\usepackage{polyglossia}
+\setmainlanguage{spanish}
+\setotherlanguage{english}
+\else
+\usepackage[spanish, mexico-com]{babel} % Load characters and hyphenation
+\fi
+\usepackage[spanish=mexican]{csquotes}	% Spanish quotes
+
+% Load packages for testing
+\usepackage{blindtext}
+%\usepackage{showframe} % Uncomment to show boxes around the text area, margin, header and footer
+%\usepackage{showlabels} % Uncomment to output the content of \label commands to the document where they are used
+
+%-------------------------------------------------------------
+%   MY ADDS
+%-------------------------------------------------------------
+%\usepackage{adjmulticol}
+\usepackage{tikz}
+\usetikzlibrary{calc, patterns}
+\usepackage{tikz-dimline}
+\usepackage{pgfplots}  % Gráfica de funciones
+
+\usepackage{amssymb, amsfonts, mathtools, bm}  % Matemática. kaobook ya carga amsmath
+\usepackage{siunitx}  % Unidades del SI.
+\usepackage{blkarray}  % Para indicar filas y columnas en matrices
+\usepackage{subcaption}  % Caption a subfiguras
+\usepackage[most]{tcolorbox}  % Cuadros de colores
+\usepackage{standalone}  % para generar gráficos en archivos separados
+\usepackage{systeme}  % Para escribir sistemas de ecuaciones
+\usepackage{cancel}  % Para tachar términos en ecuaciones
+\usepackage{nomencl}  % Para crear nomenclatura
+\makenomenclature
+
+% Mis colores
+\definecolor{tt1}{RGB}{210, 214, 217}
+\definecolor{tt2}{RGB}{186, 189, 191}
+\definecolor{tt3}{RGB}{240, 241, 242}
+\definecolor{tt4}{RGB}{115, 114, 114}
+\definecolor{tt5}{RGB}{38, 26, 23}
+%
+
+
+%Para repetir figuras con la misma enumeración
+\newcommand{\repeatcaption}[2]{%
+	\renewcommand{\thefigure}{\ref{#1}}%
+	\captionsetup{list=no}%
+	\caption{#2 (repetido de la pág. \pageref{#1}).}%
+	\addtocounter{figure}{-1}% So that next figure after the repeat gets the right number.
+}
+
+%---------------------------
+% THE END OF MY ADDS
+%---------------------------
+
+
+% Load the bibliography package
+\usepackage{kaobiblio}
+\addbibresource{./bibs/bef.bib} % Bibliography file
+
+% Load mathematical packages for theorems and related environments
+\usepackage[framed=true]{kaotheorems}
+
+% Load the package for hyperreferences
+\usepackage{kaorefs}
+
+\graphicspath{{figs/}, {images/}} % Paths in which to look for images
+
+\makeindex[columns=3, title=Alphabetical Index, intoc] % Make LaTeX produce the files required to compile the index
+
+\makeglossaries % Make LaTeX produce the files required to compile the glossary
+\input{./bibs/glossary.tex} % Include the glossary definitions
+
+\makenomenclature % Make LaTeX produce the files required to compile the nomenclature
+
+% Reset sidenote counter at chapters
+%\counterwithin*{sidenote}{chapter}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+	% Mis macros
+	\include{./resources/macros}
+	
+	\frontmatter % Parte introductoria
+	
+	% Portada
+	\include{./caps/portada}
+	% \cleardoublepage
+	
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\printnomenclature[1.2cm]
+	
+	\mainmatter %Parte principal
+	
+	% Capítulos
+	%	\include{caps/intro}
+	\include{./caps/mate-bases}
+	%	\include{caps/python}
+	\include{./caps/fundamentales}
+	\include{./caps/aproximados}
+	\include{./caps/unidim}
+	%	\include{caps/dinamica}
+	
+	% Apéndices
+	
+	\backmatter %Parte final
+	
+	% Configuración de la parte Bibliografía
+	\printbibliography[heading=bibintoc, title=Bibliografía] % Add the bibliography heading to the ToC, set the title of the bibliography and output the bibliography note
+	\setglossarystyle{listgroup} % Set the style of the glossary (see https://en.wikibooks.org/wiki/LaTeX/Glossary for a reference)
+	\printglossary[type=\acronymtype]
+	\printglossary[title=Glosario, toctitle=Glosario de términos] % Output the glossary, 'title' is the chapter heading for the glossary, toctitle is the table of contents heading
+	\printindex % Output the index
+	
+\end{document}

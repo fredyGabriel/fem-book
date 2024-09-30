@@ -1,4 +1,4 @@
-%!TEX root = ../principal.tex
+%!TEX root = ../main.tex
 \setchapterimage[7.5cm]{figs/fundamentales/pilares}
 \setchapterpreamble[u]{\margintoc}
 
@@ -353,13 +353,25 @@ Con los vectores $\bm{\sigma}$ y $\bm{\varepsilon}$, la relación anterior, matr
 
 En donde, $\mathbf{D}$ es una matriz simétrica $6 \times 6$.
 
+\begin{equation}
+	\mathbf{D} = \dfrac{E}{(1+\nu)(1-2\nu)}
+	\begin{bmatrix}
+		1-\nu & \nu & \nu & 0 & 0 & 0 \\
+		\nu & 1-\nu & \nu & 0 & 0 & 0 \\
+		\nu & \nu & 1-\nu & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0.5-2\nu & 0 & 0 \\
+		0 & 0 & 0 & 0 & 0.5-2\nu & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0.5-2\nu
+	\end{bmatrix}
+\end{equation}
+
 
 \subsection{Energía potencial total}
 
 La energía potencial total\index{energía potencial total} del sistema estructural se define como:
 
 \begin{equation}
-	\Pi = U - W
+	\Pi = U + W
 	\label{eq:EP}
 \end{equation}
 
@@ -372,7 +384,7 @@ Siendo $U$ la energía de deformación unitaria\index{energía de deformación u
 El potencial de trabajo está dado por:
 
 \begin{equation}
-	W = \int_V \mathbf{u}^T \mathbf{f} \, dV + \int_S \mathbf{u}^T \mathbf{T} \, dS + \sum_i \mathbf{u}^T_i \mathbf{P}_i
+	W = -\int_V \mathbf{u}^T \mathbf{f} \, dV - \int_S \mathbf{u}^T \mathbf{T} \, dS - \sum_i \mathbf{u}^T_i \mathbf{P}_i
 \end{equation}
 
 
@@ -386,7 +398,25 @@ El potencial de trabajo está dado por:
 
 \subsection{Barra con carga axial}
 
-Para problemas unidimensionales, la energía potencial total es:
+En la fig. \ref{fig:barra-carga-axial} se muestra una barra de sección variable con carga axial, su ecuación diferencial gobernante es:
+\begin{equation}
+	\dfrac{d}{dx} \left( AE \dfrac{du}{dx} \right) + p = 0
+	\label{eq:barra-axial}
+\end{equation}
+
+\marginpar{
+	\captionsetup{type=figure}
+	\includestandalone[width=\marginparwidth]{figs/fundamentales/barra-carga-axial}
+	\caption{Barra con carga axial}
+	\label{fig:barra-carga-axial}
+}
+
+Si $AE = cte.$ \eqref{eq:barra-axial} se convierte en:
+\begin{equation}
+	AE \dfrac{d^2u}{dx^2} + p = 0
+\end{equation}
+
+Por otro lado, la energía potencial total es:
 
 \begin{equation}
 	\Pi = \dfrac{1}{2} \int_L \sigma \varepsilon A \, dx - \int_L up\, dx - \sum_i u_i P_i
@@ -396,18 +426,77 @@ Para problemas unidimensionales, la energía potencial total es:
 como $\sigma A = EA \varepsilon = EA \dfrac{du}{dx}$, entonces:
 
 \begin{equation}
-	\boxed{\Pi = \dfrac{1}{2} \int_L EA \left( \dfrac{du}{dx} \right)^2 \, dx - \int_L up\, dx - \sum_i u_i P_i}
+	\Pi = \dfrac{1}{2} \int_L EA \left( \dfrac{du}{dx} \right)^2 \, dx - \int_L up\, dx - \sum_i u_i P_i
 	\label{eq:eptuni}
 \end{equation}
 
 \subsection{Vigas}
 
-En el caso de elementos de vigas, donde el momento flector es preponderante, la energía potencial total es:
+La fig. \ref{fig:viga} muestra un caso particular de viga, en general la ecuación diferencial gobernante es:
+
 \begin{equation}
-	\boxed{\Pi = \frac{1}{2} \int_L EI \left(\frac{d^2v}{dx^2}\right)^2 \, dx - \int_L vq \, dx - \sum_i v_iP_i}
+	\dfrac{d^2}{dx^2} \left( EI \dfrac{d^2v}{dx^2}\right) - q = 0
+	\label{eq:ed-viga}
+\end{equation}
+
+\marginpar{
+	\captionsetup{type=figure}
+	\includestandalone[width=\marginparwidth]{figs/fundamentales/viga0}
+	\caption{Viga con carga distribuida.}
+	\label{fig:viga}
+}
+
+Si $EI = cte.$ \eqref{eq:ed-viga} se convierte en:
+
+\begin{equation}
+	\dfrac{d^4v}{dx^4} - \dfrac{q}{EI} = 0
+	\label{eq:ed-viga-cte}
+\end{equation}
+
+La energía potencial total es:
+\begin{equation}
+	\Pi = \frac{1}{2} \int_L EI \left(\frac{d^2v}{dx^2}\right)^2 \, dx - \int_L vq \, dx - \sum_i v_iP_i
 	\label{eq:energia-vigas}
 \end{equation}
+
 en donde $v = v(x)$ es el campo de desplazamientos verticales de la viga, con carga 
 distribuida $q = q(x)$ y puntuales $P_i$ (las cargas se consideran positivas hacia 
 arriba, coherentes con el sentido positivo de $v$).
 
+\subsection{Losas}
+
+En la fig. \ref{fig:losa0}, se representa una losa cargada. La ecuación diferencial gobernante es \cite{timoshenko1959theory}:
+\begin{equation}
+	 \dfrac{\partial^4 w}{\partial x^4} + 2\dfrac{\partial^4 w}{\partial x^2y^2} + \dfrac{\partial^4 w}{\partial y^4} - \dfrac{q}{D} = 0
+\end{equation}
+\marginpar{
+	\captionsetup{type=figure}
+	\includestandalone[width=\marginparwidth]{figs/fundamentales/losa0}
+	\caption{Losa cargada.}
+	\label{fig:losa0}
+}
+con:
+\begin{equation}
+	D = \dfrac{Eh^3}{12 (1 - \nu^2)}
+\end{equation}
+
+O también:
+\begin{equation}
+	\laplace^2 w - \dfrac{q}{D} = 0
+\end{equation}
+
+en donde $\laplace (\cdot)$ es el operador de Laplace:
+\begin{equation}
+	\laplace (\cdot) = \nabla^2 (\cdot) = \dfrac{\partial^2 (\cdot)}{\partial x^2} + \dfrac{\partial^2 (\cdot)}{\partial y^2}
+\end{equation}
+
+La energía de deformación unitaria es:
+\begin{equation}
+	U = \frac{1}{2} \iint_S D \left[ \left( \frac{\partial^2 w}{\partial x^2} \right)^2 + 2 \frac{\partial^2 w}{\partial x^2} \frac{\partial^2 w}{\partial y^2} + \left( \frac{\partial^2 w}{\partial x^2} \right)^2 \right] \ dx dy
+\end{equation}
+
+Por lo tanto, la energía potencial total es:
+
+\begin{equation}
+	\Pi = \frac{1}{2} \iint_S D \left( \laplace^2 w \right)^2 \ dx dy - \iint_S w q \ dx dy
+\end{equation}

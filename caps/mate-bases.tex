@@ -33,6 +33,224 @@ En 1687 fue publicado Philosophiæ naturalis principia mathematica (en latín) d
 
 1834 Principio de Hamilton
 
+
+\section{Álgebra lineal}
+\subsection{Operaciones con matrices}
+
+Inspirado en el enfoque claro y conciso del libro ``Linear Algebra and Its Applications'' de Gilbert Strang, este capítulo introduce el concepto fundamental de las matrices y las operaciones básicas que se pueden realizar con ellas. Las matrices son arreglos rectangulares de números que desempeñan un papel esencial en diversas áreas de las matemáticas, la física, la ingeniería y la computación.  Su capacidad para representar y manipular datos de forma eficiente las convierte en una herramienta indispensable en el análisis de sistemas lineales y en la resolución de problemas complejos.
+
+\subsubsection{¿Qué es una Matriz?}
+
+Una matriz es un arreglo rectangular de números, símbolos o expresiones, organizados en filas y columnas.  Cada número dentro de la matriz se denomina elemento o entrada.  
+
+\begin{equation*}
+	A = \begin{bmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{m1} & a_{m2} & \cdots & a_{mn} 
+	\end{bmatrix}
+\end{equation*}
+
+En esta matriz $A$, $a_{ij}$ representa el elemento ubicado en la fila $i$ y la columna $j$.  El tamaño de una matriz se define por su número de filas ($m$) y su número de columnas ($n$), y se denota como $m \times n$.  Por ejemplo, la matriz $A$ mostrada arriba es una matriz $m \times n$.
+
+\subsubsection{Operaciones con Matrices}
+
+\begin{itemize}
+	\item Suma y Resta de Matrices
+	
+	La suma y la resta de matrices se definen solo para matrices del mismo tamaño.  Para sumar o restar dos matrices, simplemente se suman o restan los elementos correspondientes.
+	
+	Si $A = [a_{ij}]$ y $B = [b_{ij}]$ son dos matrices $m \times n$, entonces su suma $C = A + B$ es una matriz $m \times n$ donde $c_{ij} = a_{ij} + b_{ij}$.
+	
+	\begin{example}
+		Si $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ y $B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$, entonces 
+		$A + B = \begin{bmatrix} 1+5 & 2+6 \\ 3+7 & 4+8 \end{bmatrix} = \begin{bmatrix} 6 & 8 \\ 10 & 12 \end{bmatrix}$.
+	\end{example}
+	
+	\item Multiplicación por un Escalar
+	
+	Para multiplicar una matriz por un escalar, se multiplica cada elemento de la matriz por ese escalar.
+	
+	Si $A = [a_{ij}]$ es una matriz $m \times n$ y $k$ es un escalar, entonces el producto $kA$ es una matriz $m \times n$ donde cada elemento es $ka_{ij}$.
+	
+	\begin{example}
+		Si $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ y $k = 3$, entonces 
+		$kA = \begin{bmatrix} 3 \cdot 1 & 3 \cdot 2 \\ 3 \cdot 3 & 3 \cdot 4 \end{bmatrix} = \begin{bmatrix} 3 & 6 \\ 9 & 12 \end{bmatrix}$.
+	\end{example}
+	
+	\item Multiplicación de Matrices
+	
+	La multiplicación de matrices es una operación más compleja que la suma y la resta.  Dos matrices $A$ y $B$ pueden multiplicarse solo si el número de columnas de $A$ es igual al número de filas de $B$.
+	
+	Si $A = [a_{ij}]$ es una matriz $m \times n$ y $B = [b_{ij}]$ es una matriz $n \times p$, entonces su producto $C = AB$ es una matriz $m \times p$ donde el elemento $c_{ij}$ se calcula como:
+	
+	\begin{equation*}
+		c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{in}b_{nj} 
+	\end{equation*}
+	
+	En otras palabras, para obtener el elemento $c_{ij}$, se multiplican los elementos de la fila $i$ de $A$ por los elementos correspondientes de la columna $j$ de $B$, y se suman los productos.
+	
+	\begin{example}
+		Si $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}$ y $B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$, entonces 
+		$AB = \begin{bmatrix} 1 \cdot 5 + 2 \cdot 7 & 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 & 3 \cdot 6 + 4 \cdot 8 \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}$.
+	\end{example}
+	
+	Es importante destacar que la multiplicación de matrices no es conmutativa, es decir, en general, $AB \neq BA$.
+\end{itemize}
+
+\subsection{Tipos Especiales de Matrices}
+
+En este capítulo, exploraremos algunos tipos especiales de matrices que poseen propiedades y estructuras particulares, y que desempeñan un papel importante en diversas aplicaciones del álgebra lineal.  Nos basaremos en el libro "Linear Algebra and Its Applications" de Gilbert Strang para presentar las definiciones y ejemplos de cada tipo de matriz.
+
+\subsubsection{Transpuesta de una Matriz}
+
+La transpuesta de una matriz $A$, denotada por $A^T$, se obtiene intercambiando las filas y columnas de $A$.  Si $A = [a_{ij}]$ es una matriz $m \times n$, entonces $A^T = [a_{ji}]$ es una matriz $n \times m$.
+
+\begin{example}
+	Si $A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix}$, entonces 
+	$A^T = \begin{bmatrix} 1 & 3 & 5 \\ 2 & 4 & 6 \end{bmatrix}$.
+\end{example}
+
+\subsubsection{Matriz Diagonal}
+
+Una matriz diagonal es una matriz cuadrada en la que todos los elementos fuera de la diagonal principal son cero.
+
+\begin{example}
+	$D = \begin{bmatrix} 2 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 5 \end{bmatrix}$ es una matriz diagonal.
+\end{example}
+
+\subsubsection{Matriz Triangular Superior}
+
+Una matriz triangular superior es una matriz cuadrada en la que todos los elementos debajo de la diagonal principal son cero.
+
+\begin{example}
+	$U = \begin{bmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 0 & 0 & 6 \end{bmatrix}$ es una matriz triangular superior.
+\end{example}
+
+\subsection{Matriz Triangular Inferior}
+
+Una matriz triangular inferior es una matriz cuadrada en la que todos los elementos encima de la diagonal principal son cero.
+
+\begin{example}
+	$L = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 3 & 0 \\ 4 & 5 & 6 \end{bmatrix}$ es una matriz triangular inferior.
+\end{example}
+
+\subsection{Matriz Simétrica}
+
+Una matriz simétrica es una matriz cuadrada que es igual a su transpuesta, es decir, $A = A^T$.
+
+\begin{example}
+	$S = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 5 \\ 3 & 5 & 6 \end{bmatrix}$ es una matriz simétrica.
+\end{example}
+
+\subsection{Matriz Ortogonal}
+
+Una matriz ortogonal es una matriz cuadrada cuya inversa es igual a su transpuesta, es decir, $A^{-1} = A^T$.
+
+\begin{example}
+	$Q = \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}$ es una matriz ortogonal que representa una rotación en el plano.
+\end{example}
+
+\subsubsection{Determinantes}
+
+El determinante de una matriz cuadrada es un valor escalar que se puede calcular a partir de los elementos de la matriz.  El determinante proporciona información sobre la invertibilidad de la matriz y el cambio de volumen que produce una transformación lineal representada por la matriz.
+
+\subsubsection{Valores y Vectores Característicos}
+
+Los valores y vectores característicos (o eigenvalores y eigenvectores) de una matriz cuadrada $A$ son escalares $\lambda$ y vectores $\mathbf{v}$ que satisfacen la ecuación:
+
+\begin{equation}
+	A\mathbf{v} = \lambda \mathbf{v}
+\end{equation}
+
+Los valores y vectores característicos son fundamentales en el análisis de sistemas dinámicos y en la resolución de problemas de vibraciones, entre otras aplicaciones.
+
+\subsubsection{Matriz Definida Positiva}
+
+Una matriz simétrica $A$ es definida positiva si para cualquier vector no nulo $\mathbf{x}$, se cumple que $\mathbf{x}^T A \mathbf{x} > 0$.  Las matrices definidas positivas tienen aplicaciones en optimización y en el análisis de estabilidad de sistemas.
+
+\subsection{Espacios vectoriales}
+
+Esta sección repasa el concepto fundamental de espacio vectorial. Los espacios vectoriales son estructuras algebraicas que generalizan la noción de vectores en el plano y el espacio tridimensional.  Proporcionan un marco abstracto para trabajar con objetos que se pueden sumar y multiplicar por escalares, y son esenciales para comprender conceptos como la independencia lineal, la base y la dimensión, que son pilares del álgebra lineal.
+
+\subsubsection{Definición de Espacio Vectorial}
+
+Un espacio vectorial $V$ sobre un campo $\mathbb{F}$ (usualmente $\mathbb{R}$ o $\mathbb{C}$) es un conjunto no vacío de objetos, llamados vectores, que satisfacen las siguientes propiedades:
+
+\begin{enumerate}
+	\item \textbf{Suma de vectores}
+	\begin{itemize}
+		\item Para cualquier par de vectores $\mathbf{u}$ y $\mathbf{v}$ en $V$, su suma $\mathbf{u} + \mathbf{v}$ también pertenece a $V$.
+		\item La suma es conmutativa: $\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$ para todo $\mathbf{u}, \mathbf{v} \in V$.
+		\item La suma es asociativa: $(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$ para todo $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$.
+		\item Existe un vector cero, denotado por $\mathbf{0}$, tal que $\mathbf{u} + \mathbf{0} = \mathbf{u}$ para todo $\mathbf{u} \in V$.
+		\item Para cada vector $\mathbf{u}$ en $V$, existe un vector inverso, denotado por $-\mathbf{u}$, tal que $\mathbf{u} + (-\mathbf{u}) = \mathbf{0}$.
+	\end{itemize}
+	
+	\item \textbf{Multiplicación por un escalar}:
+	\begin{itemize}
+		\item Para cualquier vector $\mathbf{u}$ en $V$ y cualquier escalar $c$ en $\mathbb{F}$, el producto $c\mathbf{u}$ también pertenece a $V$.
+		\item La multiplicación por un escalar es distributiva con respecto a la suma de vectores: $c(\mathbf{u} + \mathbf{v}) = c\mathbf{u} + c\mathbf{v}$ para todo $\mathbf{u}, \mathbf{v} \in V$ y $c \in \mathbb{F}$.
+		\item La multiplicación por un escalar es distributiva con respecto a la suma de escalares: $(c + d)\mathbf{u} = c\mathbf{u} + d\mathbf{u}$ para todo $\mathbf{u} \in V$ y $c, d \in \mathbb{F}$.
+		\item La multiplicación por un escalar es asociativa: $c(d\mathbf{u}) = (cd)\mathbf{u}$ para todo $\mathbf{u} \in V$ y $c, d \in \mathbb{F}$.
+		\item El escalar $1$ actúa como elemento neutro: $1\mathbf{u} = \mathbf{u}$ para todo $\mathbf{u} \in V$.
+	\end{itemize}
+\end{enumerate}
+
+
+\subsubsection{Introducción a los Espacios Vectoriales}
+
+Los espacios vectoriales son una abstracción poderosa que nos permite generalizar la noción de vectores más allá de las flechas en el plano o el espacio tridimensional.  En un espacio vectorial, los "vectores" pueden ser cualquier tipo de objeto que cumpla con las propiedades de la definición, como polinomios, funciones, matrices, o incluso señales.
+
+\begin{example}
+	El conjunto de todos los vectores en el plano $\mathbb{R}^2$, con la suma y la multiplicación por un escalar usuales, forma un espacio vectorial.
+\end{example}
+
+\begin{example}
+	El conjunto de todos los polinomios de grado menor o igual que $n$, con la suma y la multiplicación por un escalar usuales, forma un espacio vectorial.
+\end{example}
+
+Los espacios vectoriales son esenciales para comprender conceptos como la independencia lineal, la base y la dimensión, que son fundamentales en el álgebra lineal y tienen aplicaciones en diversas áreas de la ciencia y la ingeniería.  En los siguientes capítulos, exploraremos estos conceptos con mayor profundidad y veremos cómo se aplican en la resolución de problemas de análisis estructural.
+
+\subsection{Transformación lineal}
+
+Esta sección recuerda el concepto de transformación lineal. Las transformaciones lineales son funciones que preservan las operaciones de suma de vectores y multiplicación por un escalar.  Son fundamentales en álgebra lineal, ya que nos permiten comprender cómo los vectores se transforman de un espacio vectorial a otro, y tienen aplicaciones en diversas áreas como la geometría, la física y la ingeniería.
+
+\subsubsection{Definición de Transformación Lineal}
+
+Sean $V$ y $W$ dos espacios vectoriales sobre el mismo campo $\mathbb{F}$.  Una transformación lineal $T: V \rightarrow W$ es una función que asigna a cada vector $\mathbf{v}$ en $V$ un vector $T(\mathbf{v})$ en $W$, y que satisface las siguientes propiedades:
+
+\begin{enumerate}
+	\item \textbf{Preserva la suma de vectores}:  $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$ para todo $\mathbf{u}, \mathbf{v} \in V$.
+	
+	\item \textbf{Preserva la multiplicación por un escalar}: $T(c\mathbf{v}) = cT(\mathbf{v})$ para todo $\mathbf{v} \in V$ y $c \in \mathbb{F}$.
+\end{enumerate}
+
+En esencia, una transformación lineal "respeta" las operaciones de espacio vectorial: la imagen de la suma de dos vectores es la suma de las imágenes, y la imagen del producto de un vector por un escalar es el producto de la imagen por ese escalar.
+
+\subsubsection{Ejemplos de Transformaciones Lineales}
+
+\begin{itemize}
+	\item \textbf{Rotación}: Una rotación en el plano o en el espacio es una transformación lineal que gira los vectores alrededor de un punto fijo.
+	\item \textbf{Proyección}:  Una proyección sobre una línea o un plano es una transformación lineal que ``proyecta'' cada vector sobre esa línea o plano.
+	\item \textbf{Reflexión}:  Una reflexión a través de una línea o un plano es una transformación lineal que "refleja" cada vector a través de esa línea o plano.
+	\item \textbf{Derivación}: La operación de derivación en el espacio vectorial de las funciones polinomiales es una transformación lineal.
+\end{itemize}
+
+\subsubsection{Importancia de las Transformaciones Lineales}
+
+Las transformaciones lineales son fundamentales en álgebra lineal por varias razones:
+\begin{itemize}
+	\item Representan relaciones lineales:  Capturan la esencia de las relaciones lineales entre vectores.
+	\item Simplifican problemas: Permiten transformar problemas complejos en problemas más simples en otros espacios vectoriales.
+	\item Tienen aplicaciones en diversas áreas: Se utilizan en geometría, física, ingeniería, procesamiento de imágenes, aprendizaje automático y muchas otras disciplinas.
+\end{itemize}
+
+\subsection{Cambio de base}
+\subsection{Espacios de Hilbert}
+\subsection{Valores y vectores propios}
+
 \section{Cálculo variacional}
 
 \subsection{Máximos, mínimos y puntos silla}
@@ -186,7 +404,7 @@ En este caso, el funcional que queremos minimizar es el tiempo de recorrido, que
 
 donde $g$ es la aceleración debida a la gravedad.
 
-La Lagrangiana correspondiente es:
+El Lagrangiano correspondiente es:
 
 \begin{equation}
 	L(x, y, y') = \frac{\sqrt{1 + (y'(x))^2}}{\sqrt{2gy(x)}}
@@ -194,14 +412,4 @@ La Lagrangiana correspondiente es:
 
 Aplicando la ecuación de Euler-Lagrange, se puede demostrar que la curva que minimiza el tiempo de recorrido es una cicloide.
 
-\section{Conclusión}
-
 La ecuación de Euler-Lagrange es una herramienta fundamental en el cálculo variacional y tiene aplicaciones en diversas áreas de la física, la ingeniería y la economía.  Permite encontrar funciones que optimizan funcionales, lo que tiene implicaciones en la resolución de problemas de optimización y en la modelización de fenómenos físicos.
-
-\section{Álgebra lineal}
-\subsection{Operaciones con matrices}
-\subsection{Espacios vectoriales}
-\subsection{Transformación lineal}
-\subsection{Cambio de base}
-\subsection{Espacios de Hilbert}
-\subsection{Valores y vectores propios}

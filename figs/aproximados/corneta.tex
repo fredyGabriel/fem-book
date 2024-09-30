@@ -5,7 +5,8 @@
 \begin{document}
 	\centering
 	\begin{tikzpicture}[scale=.35]
-		\draw[thick] (0, 1) -- (10, 1) -- (18, 2.5) -- (18, -2.5) -- (10, -1) -- (0, -1);
+		% Barra
+		\draw[thick,  outer color=gray, inner color=white] (0, 1) -- (10, 1) -- (18, 2.5) -- (18, -2.5) -- (10, -1) -- (0, -1) -- cycle;
 		\draw[dashed] (5, 0) -- (18, 0);
 		
 		% Flechas
@@ -22,7 +23,7 @@
 		
 		% Áreas
 		\node at (5, 2.1) {$\mbox{Área} = 1 \unit{cm^2}$};
-		\node at (13, 5) {$\mbox{Área} = \left(1 + \dfrac{y}{40}\right)^2 \unit{cm^2}$};
+		\node at (13, 5) {$\text{Área} = \left(1 + \dfrac{y}{40}\right)^2 \unit{cm^2}$};
 		\draw[-latex] (13, 3.7) -- (14, 2);
 		\draw[-latex] (10, -1.5) -- (10, -3) -- (12, -3) node[above]{$y$};
 		

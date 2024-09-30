@@ -1,4 +1,4 @@
-%!TEX root = ../principal.tex
+%!TEX root = ../main.tex
 \setchapterimage[7.5cm]{figs/aproximados/domo}
 \setchapterpreamble[u]{\margintoc}
 
@@ -682,7 +682,7 @@ Finalmente, reuniendo \eqref{eq:g1} y \eqref{eq:partes}, se obtiene \eqref{eq:GU
 				a = \dfrac{2700}{67}
 			\end{equation}
 			
-			como en \eqref{eq:a1}.
+			como en \eqref{eq:coefs}.
 			
 			\item \textbf{Segunda aproximación}
 			
@@ -787,10 +787,16 @@ La condición natural (o estática) de frontera es:
 	8 a_{3} + \frac{84}{5} a_{4} + 26 a_{5} = \frac{1}{20},
 	12 a_{3} + 26 a_{4} + \frac{288}{7}a_{5} = \frac{5}{84}}
 	\]
+	\begin{marginfigure}[-.5cm]
+		\centering
+		\includestandalone[width=\marginparwidth]{figs/aproximados/dfv}
+		\caption{Deformada de la viga}
+		\label{fig:dfv}
+	\end{marginfigure}
 	cuya solución es:
 	\[ a_3 = \frac{1}{15}; \quad a_4 = -\frac{1}{24}; \quad a_5 = \frac{1}{120} \]
 	
-	La función aproximadora es en consecuencia:
+	La función aproximadora es en consecuencia (fig. \ref{fig:dfv}):
 	\[ v(x) = -\frac{1}{30}x^2 + \frac{1}{15}x^3 - \frac{1}{24}x^4 + \frac{1}{120}x^5 \]
 	
 	\item \textbf{Método de Galerkin}
@@ -828,31 +834,39 @@ La condición natural (o estática) de frontera es:
 	\frac{d^2\phi_i}{dx^2}\\
 	&= -v''(1) \phi'(1) + \int_L \frac{d^2v}{dx^2} \frac{d^2\phi_i}{dx^2}dx
 	\end{split} \]
+	
+	de donde:;
+	\[ \int_L v'' \phi_i'' dx = \int_L q \phi_i dx + v''(1)\phi'(1) \]
 
-	En donde se han considerando las condiciones de frontera esenciales, si además
-	se considera la condición de frontera natural, se llega a la expresión:
-	\[ \int_L \frac{d^2v}{dx^2} \frac{d^2\phi_i}{dx^2}dx = \int_L q \phi_i dx \]
-
-	Esta es, precisamente, la expresión del trabajo virtual tal como se deduciría de la
-	ec. \eqref{eq:tv-vigas}.
-
-	El cálculo de las integrales indicadas, para cada función $\phi_i$ lleva al siguiente
-	sistema de ecuaciones:
-
-	\[ \systeme{2a_4 + 6a_5 = -\frac{1}{30},
-	\frac{16}{5}a_{4} + 10 a_{5} = - \frac{1}{20},
-	4 a_{4} + \frac{90}{7}a_{5} = -\frac{5}{84}}\]
-
-	El sistema es consistente y tiene las soluciones:
-
-	\[ a_4 = -\frac{1}{24}; \quad a_5 = \frac{1}{120} \]
-
-	Como el sistema resultó ser independiente de $a_3$, para hallarlo, se utiliza la condición de 
-	frontera natural con los valores hallados de $a_4$ y $a_5$, de donde resulta:
-	\[a_3 = \frac{1}{15} \]
-
-	Se llega por tanto a la misma función aproximadora obtenida con el método de 
-	Rayleigh-Ritz.
+	El cálculo para cada $\phi_i$ lleva al mismo sistema de ecuaciones obtenido por el método de Rayleigh-Ritz, por lo tanto se llega a la misma función aproximadora.
+	\vspace{2mm}
+	\item \textbf{Diagramas de esfuerzos}
+	\begin{marginfigure}[-.5cm]
+		\centering
+		\includestandalone[width=\marginparwidth]{figs/aproximados/dfq0}
+		\caption{Diagrama de fuerza cortante}
+		\label{fig:dfq0}
+	\end{marginfigure}
+	
+	Vamos a necesitar hasta la derivada de tercer orden de la función aproximadora:
+	\[ v(x) = -\frac{1}{30}x^2 + \frac{1}{15}x^3 - \frac{1}{24}x^4 + \frac{1}{120}x^5 \]
+	\[ v'(x) = -\frac{1}{15}x + \frac{1}{5}x^2 - \frac{1}{6}x^3 + \frac{1}{24}x^4 \]
+	\[ v''(x) = -\frac{1}{15} + \frac{2}{5}x - \frac{1}{2}x^2 + \frac{1}{6}x^3 \]
+	\[ v'''(x) = \frac{2}{5} - x + \frac{1}{2}x^2 \]
+	\begin{marginfigure}[-.5cm]
+		\centering
+		\includestandalone[width=\marginparwidth]{figs/aproximados/dmf0}
+		\caption{Diagrama de momento flector}
+		\label{fig:dmf0}
+	\end{marginfigure}
+	
+	\begin{itemize}
+		\item Diagrama de fuerza cortante, fig. \ref{fig:dfq0}.
+		Se obtiene de:
+		\[ V = EIv''' = \frac{2}{5} - x + \frac{1}{2}x^2 \]
+		\item Diagrama de momento flector, fig. \ref{fig:dmf0}.
+		\[ M = EI v'' = -\frac{1}{15} + \frac{2}{5}x - \frac{1}{2}x^2 + \frac{1}{6}x^3 \]
+	\end{itemize}
 	
 \end{itemize}
 	

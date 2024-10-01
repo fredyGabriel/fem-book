@@ -398,18 +398,22 @@ El potencial de trabajo está dado por:
 
 \subsection{Barra con carga axial}
 
-En la fig. \ref{fig:barra-carga-axial} se muestra una barra de sección variable con carga axial, su ecuación diferencial gobernante es:
+En la fig. \ref{fig:barra-carga-axial} se muestra una barra de sección variable con carga axial. La ecuación de equilibrio de una porción elemental $dx$ de la barra es:
 \begin{equation}
-	\dfrac{d}{dx} \left( AE \dfrac{du}{dx} \right) + p = 0
-	\label{eq:barra-axial}
+	\dfrac{dN}{dx} + p = 0
+	\label{dNdx}
 \end{equation}
-
 \marginpar{
 	\captionsetup{type=figure}
 	\includestandalone[width=\marginparwidth]{figs/fundamentales/barra-carga-axial}
 	\caption{Barra con carga axial}
 	\label{fig:barra-carga-axial}
 }
+de donde la ecuación diferencial gobernante es:
+\begin{equation}
+	\dfrac{d}{dx} \left( AE \dfrac{du}{dx} \right) + p = 0
+	\label{eq:barra-axial}
+\end{equation}
 
 Si $AE = cte.$ \eqref{eq:barra-axial} se convierte en:
 \begin{equation}
@@ -432,11 +436,13 @@ como $\sigma A = EA \varepsilon = EA \dfrac{du}{dx}$, entonces:
 
 \subsection{Vigas}
 
-La fig. \ref{fig:viga} muestra un caso particular de viga, en general la ecuación diferencial gobernante es:
+La fig. \ref{fig:viga} muestra un caso particular de viga. Son conocidas, de los cursos de mecánica de materiales, las siguientes relaciones:
 
 \begin{equation}
-	\dfrac{d^2}{dx^2} \left( EI \dfrac{d^2v}{dx^2}\right) - q = 0
-	\label{eq:ed-viga}
+	\begin{cases}
+		\dfrac{dV}{dx} = q\\[3mm]
+		\dfrac{dM}{dx} = V
+	\end{cases}
 \end{equation}
 
 \marginpar{
@@ -446,8 +452,27 @@ La fig. \ref{fig:viga} muestra un caso particular de viga, en general la ecuaci�
 	\label{fig:viga}
 }
 
-Si $EI = cte.$ \eqref{eq:ed-viga} se convierte en:
+de donde:
+\[ \dfrac{d^2 M }{dx^2} = q \]
 
+además:
+\[ \dfrac{d^2 v}{dx^2} = \dfrac{M}{EI} \]
+
+Por tanto:
+\begin{equation}
+	\begin{cases}
+		M = EI \dfrac{d^2v}{dx^2} \\[3mm]
+		V = \dfrac{dM}{dx} = \dfrac{d}{dx} \left( EI \dfrac{d^2v}{dx^2} \right)
+	\end{cases}
+\end{equation}
+
+en general la ecuación diferencial gobernante es:
+\begin{equation}
+	\dfrac{d^2}{dx^2} \left( EI \dfrac{d^2v}{dx^2}\right) - q = 0
+	\label{eq:ed-viga}
+\end{equation}
+
+Si $EI = cte.$ \eqref{eq:ed-viga} se convierte en:
 \begin{equation}
 	\dfrac{d^4v}{dx^4} - \dfrac{q}{EI} = 0
 	\label{eq:ed-viga-cte}

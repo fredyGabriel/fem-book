@@ -26,9 +26,11 @@ MANIFEST.md
 *.bak
 *~
 
-# Carpetas específicas de tu proyecto
+# Carpetas específicas del proyecto
 aux-files/
 out/
+releases/
+images/
 
 # Archivos de configuración del sistema
 desktop.ini
